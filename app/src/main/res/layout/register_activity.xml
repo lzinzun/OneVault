@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".RegisterActivity">
+
+    <ImageView
+        android:id="@+id/onevault_logo"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:src="@drawable/onevault_logo" />
+
+    <EditText
+        android:id="@+id/email_text_view"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/transparent_tv"
+        android:ems="10"
+        android:hint="Enter an Email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="16dp"
+        android:textColor="#FFFBF8"
+        android:textColorHint="#FFFBF8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/password_text_view"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/transparent_tv"
+        android:ems="10"
+        android:hint="Create a Password"
+        android:inputType="textPassword"
+        android:paddingLeft="16dp"
+        android:textColor="#FFFBF8"
+        android:textColorHint="#FFFBF8"
+        app:layout_constraintEnd_toEndOf="@+id/email_text_view"
+        app:layout_constraintStart_toStartOf="@+id/email_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/email_text_view" />
+
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="#FFFBF8"
+        android:textStyle="bold"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="@+id/password_text_view"
+        app:layout_constraintStart_toStartOf="@+id/password_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/password_text_view" />
+
+</LinearLayout>
