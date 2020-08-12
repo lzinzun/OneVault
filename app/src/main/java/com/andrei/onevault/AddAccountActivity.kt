@@ -7,6 +7,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.andrei.onevault.model.Account
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import io.realm.Realm
 
 class AddAccountActivity : AppCompatActivity() {
@@ -15,6 +17,8 @@ class AddAccountActivity : AppCompatActivity() {
     private lateinit var descED:EditText
     private  lateinit var savePsswdBtn:Button
     private lateinit var realm:Realm
+    private lateinit var firebaseUser:FirebaseUser
+    private lateinit var firebaseAuth:FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?){
 
@@ -38,19 +42,13 @@ class AddAccountActivity : AppCompatActivity() {
 
             realm.beginTransaction()
 
-            val currentNumber: Number? = realm.where(Account::class.java).max("id")
-            val nextID:Int
-
-            nextID = if(currentNumber == null){
-                1
-            }else{
-                currentNumber.toInt()+1
-            }
+            firebaseAuth = FirebaseAuth.getInstance()
+            firebaseUser = firebaseAuth.currentUser!!
 
             val account  = Account()
             account.title = titleED.text.toString()
             account.desc = descED.text.toString()
-            account.id = nextID
+            account.id = firebaseUser.uid
 
             //copy to DB
             realm.copyToRealmOrUpdate(account)
