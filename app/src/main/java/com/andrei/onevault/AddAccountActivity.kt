@@ -10,9 +10,6 @@ import com.andrei.onevault.model.Account
 import com.andrei.onevault.service.impl.AccountDataServiceImpl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import io.realm.Realm
-import io.realm.RealmQuery
-import io.realm.RealmResults
 
 class AddAccountActivity : AppCompatActivity() {
 

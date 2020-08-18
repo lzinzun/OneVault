@@ -2,11 +2,7 @@ package com.andrei.onevault.dao.impl
 
 import com.andrei.onevault.dao.AccountDataDao
 import com.andrei.onevault.model.Account
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import io.realm.Realm
-import io.realm.RealmQuery
-import io.realm.RealmResults
 import java.util.*
 
 class AccountDataDaoImpl: AccountDataDao {
@@ -25,7 +21,6 @@ class AccountDataDaoImpl: AccountDataDao {
 
             //copy to DB
             realm.insertOrUpdate(account)
-            //realm.copyToRealmOrUpdate(account)
             realm.commitTransaction()
 
             realm.close()

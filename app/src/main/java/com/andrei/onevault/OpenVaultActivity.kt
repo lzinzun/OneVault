@@ -15,8 +15,6 @@ import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.RealmQuery
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.account_rv_layout.*
-import kotlinx.android.synthetic.main.open_vault_layout.*
 
 class OpenVaultActivity : AppCompatActivity(){
 

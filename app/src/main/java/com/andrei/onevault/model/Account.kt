@@ -5,7 +5,7 @@ import io.realm.annotations.PrimaryKey
 
 open class Account (
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     var id:Int?=null,
     var title:String?=null,
     var desc:String?=null,
