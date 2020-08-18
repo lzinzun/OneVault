@@ -25,7 +25,6 @@ class OpenVaultActivity : AppCompatActivity(){
     private lateinit var accountList: ArrayList<Account>
     private lateinit var realm: Realm
 
-    //exp
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var firebaseAuth:FirebaseAuth
 
@@ -50,6 +49,7 @@ class OpenVaultActivity : AppCompatActivity(){
         accountRV = findViewById(R.id.accountRV)
 
         addAccount.setOnClickListener {
+            realm.close()
             startActivity(Intent(this, AddAccountActivity::class.java))
             finish()
         }
@@ -64,7 +64,7 @@ class OpenVaultActivity : AppCompatActivity(){
 
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseUser = firebaseAuth.currentUser!!
-        val query: RealmQuery<Account> = realm.where<Account>(Account::class.java).equalTo("id", firebaseUser.uid)
+        val query: RealmQuery<Account> = realm.where<Account>(Account::class.java).equalTo("userID", firebaseUser.uid)
         val results:RealmResults<Account> = query.findAll()
 
 
