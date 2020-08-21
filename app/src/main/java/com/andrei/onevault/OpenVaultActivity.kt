@@ -2,6 +2,7 @@ package com.andrei.onevault
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,10 +10,12 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.andrei.onevault.adapter.AccountAdapter
 import com.andrei.onevault.model.Account
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import io.realm.Realm
 import io.realm.RealmConfiguration
+import io.realm.RealmQuery
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.open_vault_layout.*
 
 class OpenVaultActivity : AppCompatActivity(){
 
@@ -20,6 +23,12 @@ class OpenVaultActivity : AppCompatActivity(){
     private lateinit var accountRV: RecyclerView
     private lateinit var accountList: ArrayList<Account>
     private lateinit var realm: Realm
+
+    private lateinit var firebaseUser: FirebaseUser
+    private lateinit var firebaseAuth:FirebaseAuth
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -42,6 +51,7 @@ class OpenVaultActivity : AppCompatActivity(){
         accountRV = findViewById(R.id.accountRV)
 
         addAccount.setOnClickListener {
+            realm.close()
             startActivity(Intent(this, AddAccountActivity::class.java))
             finish()
         }
@@ -53,9 +63,18 @@ class OpenVaultActivity : AppCompatActivity(){
     private fun getAllAccounts(){
 
         accountList = ArrayList()
-        val results:RealmResults<Account> = realm.where<Account>(Account::class.java).findAll()
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        firebaseUser = firebaseAuth.currentUser!!
+        val query: RealmQuery<Account> = realm.where<Account>(Account::class.java).equalTo("userID", firebaseUser.uid)
+        val results:RealmResults<Account> = query.findAll()
+
+
         accountRV.adapter = AccountAdapter(this, results)
+
         accountRV.adapter!!.notifyDataSetChanged()
+
+
     }
 
 }
