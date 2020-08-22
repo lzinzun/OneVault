@@ -2,6 +2,10 @@ package com.andrei.onevault
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -56,6 +60,23 @@ class OpenVaultActivity : AppCompatActivity(){
         val results:RealmResults<Account> = realm.where<Account>(Account::class.java).findAll()
         accountRV.adapter = AccountAdapter(this, results)
         accountRV.adapter!!.notifyDataSetChanged()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        var inflater:MenuInflater = menuInflater
+        inflater.inflate(R.menu.accounts_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.update_option -> Toast.makeText(this, "This is Update", Toast.LENGTH_SHORT).show()
+            R.id.erase_option -> Toast.makeText(this, "This is Delete", Toast.LENGTH_SHORT).show()
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
