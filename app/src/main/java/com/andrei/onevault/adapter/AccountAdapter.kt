@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.andrei.onevault.AccountVaultActivity
 import com.andrei.onevault.AddAccountActivity
 import com.andrei.onevault.R
 import com.andrei.onevault.model.Account
@@ -40,7 +41,11 @@ class AccountAdapter(private val context: Context?, private val accountList:Real
         holder.itemView.desc_tv.text = accountList[position]!!.desc
 
         holder.itemView.cardAccounts.setOnClickListener{
-            this.mContext.startActivity(Intent(mContext, AddAccountActivity::class.java))
+            var intent:Intent = Intent(mContext, AccountVaultActivity::class.java)
+            intent.putExtra("TITLE", accountList[position]!!.title)
+            intent.putExtra("DESC", accountList[position]!!.desc)
+           //this.mContext.startActivity(Intent(mContext, AccountVaultActivity::class.java))
+            this.mContext.startActivity(intent)
         }
 
     }

@@ -23,6 +23,7 @@
 
         <activity android:name=".OpenVaultActivity"/>
         <activity android:name=".AddAccountActivity"/>
+        <activity android:name=".AccountVaultActivity"/>
     </application>
 
 </manifest>

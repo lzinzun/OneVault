@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -25,13 +26,11 @@ class OpenVaultActivity : AppCompatActivity(){
     private lateinit var addAccount: FloatingActionButton
     private lateinit var accountRV: RecyclerView
     private lateinit var accountList: ArrayList<Account>
+    private lateinit var inflater: MenuInflater
     private lateinit var realm: Realm
 
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var firebaseAuth:FirebaseAuth
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -74,27 +73,10 @@ class OpenVaultActivity : AppCompatActivity(){
 
 
         accountRV.adapter = AccountAdapter(this, results)
-
         accountRV.adapter!!.notifyDataSetChanged()
 
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        var inflater:MenuInflater = menuInflater
-        inflater.inflate(R.menu.accounts_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.update_option -> Toast.makeText(this, "This is Update", Toast.LENGTH_SHORT).show()
-            R.id.erase_option -> Toast.makeText(this, "This is Delete", Toast.LENGTH_SHORT).show()
-            else -> {
-                return super.onOptionsItemSelected(item)
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
 }
