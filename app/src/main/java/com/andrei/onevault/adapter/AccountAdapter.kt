@@ -44,7 +44,6 @@ class AccountAdapter(private val context: Context?, private val accountList:Real
             var intent:Intent = Intent(mContext, AccountVaultActivity::class.java)
             intent.putExtra("TITLE", accountList[position]!!.title)
             intent.putExtra("DESC", accountList[position]!!.desc)
-           //this.mContext.startActivity(Intent(mContext, AccountVaultActivity::class.java))
             this.mContext.startActivity(intent)
         }
 

@@ -31,4 +31,23 @@ class AccountDataDaoImpl: AccountDataDao {
             false
         }
     }
+
+    override fun deleteAccount(account: Account): Boolean {
+
+        realm = Realm.getDefaultInstance()
+
+        return try{
+
+            realm.executeTransaction{realm ->
+                account?.deleteFromRealm()
+            }
+            realm.close()
+            true
+
+        }catch(ex:Exception){
+
+            realm.close()
+            false
+        }
+    }
 }

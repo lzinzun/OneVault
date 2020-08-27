@@ -15,7 +15,7 @@ class AddAccountActivity : AppCompatActivity() {
 
     private lateinit var titleED:EditText
     private lateinit var descED:EditText
-    private  lateinit var savePsswdBtn:Button
+    private lateinit var savePsswdBtn:Button
     private lateinit var firebaseUser:FirebaseUser
     private lateinit var firebaseAuth:FirebaseAuth
 

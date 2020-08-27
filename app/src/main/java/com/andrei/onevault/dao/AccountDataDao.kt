@@ -5,4 +5,5 @@ import io.realm.Realm
 
 interface AccountDataDao {
     fun addAccount(account: Account): Boolean
+    fun deleteAccount(account: Account): Boolean
 }
