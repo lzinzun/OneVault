@@ -16,5 +16,11 @@ class AccountDataServiceImpl:AccountDataService {
 
     }
 
+    override fun deleteAccount(accountId: String): Boolean {
+
+        acctDataDao = AccountDataDaoImpl()
+        return acctDataDao.deleteAccount(accountId)
+    }
+
 
 }

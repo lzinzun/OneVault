@@ -2,8 +2,12 @@ package com.andrei.onevault
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -22,13 +26,11 @@ class OpenVaultActivity : AppCompatActivity(){
     private lateinit var addAccount: FloatingActionButton
     private lateinit var accountRV: RecyclerView
     private lateinit var accountList: ArrayList<Account>
+    private lateinit var inflater: MenuInflater
     private lateinit var realm: Realm
 
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var firebaseAuth:FirebaseAuth
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -71,10 +73,10 @@ class OpenVaultActivity : AppCompatActivity(){
 
 
         accountRV.adapter = AccountAdapter(this, results)
-
         accountRV.adapter!!.notifyDataSetChanged()
 
 
     }
+
 
 }
