@@ -13,34 +13,35 @@ import com.google.firebase.auth.FirebaseAuth
 
 class VerifyUserDialogFragment : DialogFragment() {
 
-    private lateinit var openSecretFragment:OpenSecretDialogFragment
+    private lateinit var openSecretFragment: OpenSecretDialogFragment
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        var rootView:View = inflater.inflate(R.layout.verify_user_dialog_fragment, container, false)
+        var rootView: View =
+            inflater.inflate(R.layout.verify_user_dialog_fragment, container, false)
         var passwordRevealButton = rootView.findViewById<Button>(R.id.revealPasswordBtn)
         var cancelButton = rootView.findViewById<Button>(R.id.cancelRevealBtn)
+        var acctUserId: String = arguments?.get("ACCT_ID").toString()
 
-        var acctUserId:String = arguments?.get("ACCT_ID").toString()
-
-        passwordRevealButton.setOnClickListener(object:View.OnClickListener{
+        passwordRevealButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
 
-                val bundle:Bundle = Bundle()
+                val bundle: Bundle = Bundle()
                 bundle.putString("ACCT_ID", acctUserId)
 
                 openSecretFragment = OpenSecretDialogFragment()
                 openSecretFragment.arguments = bundle
-//                requireActivity().supportFragmentManager.beginTransaction()
-//                    .replace(R.id.acct_vault_container, openSecretFragment).commit()
-
                 openSecretFragment.show(activity!!.supportFragmentManager, "Open Secret Fragment")
                 dismiss()
 
             }
         })
 
-        cancelButton.setOnClickListener(object:View.OnClickListener{
+        cancelButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
                 dismiss()
             }

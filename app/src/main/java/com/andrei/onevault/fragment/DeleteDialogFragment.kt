@@ -22,32 +22,34 @@ class DeleteDialogFragment : DialogFragment() {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        var rootView:View = inflater.inflate(R.layout.delete_dialog_fragment, container, false)
+        var rootView: View = inflater.inflate(R.layout.delete_dialog_fragment, container, false)
         var confirmButton = rootView.findViewById<Button>(R.id.confirmBtn)
         var cancelButton = rootView.findViewById<Button>(R.id.cancelBtn)
 
-        var acctId:String = arguments?.get("ACCT_ID").toString()
+        var acctId: String = arguments?.get("ACCT_ID").toString()
 
-        confirmButton.setOnClickListener(object:View.OnClickListener{
+        confirmButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
-
                 accountDataService = AccountDataServiceImpl()
-                var deleted:Boolean = accountDataService.deleteAccount(acctId)
-                if (deleted){
+                var deleted: Boolean = accountDataService.deleteAccount(acctId)
+                if (deleted) {
                     Log.e("Result", "Deleted!")
-                }else{
+                } else {
                     Log.e("Result", "Sorry not the case")
                 }
 
                 val intent = Intent(context, OpenVaultActivity::class.java)
                 context?.startActivity(intent)
-
             }
         })
 
-        cancelButton.setOnClickListener(object:View.OnClickListener{
+        cancelButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
                 dismiss()
             }

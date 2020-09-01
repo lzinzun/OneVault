@@ -5,19 +5,16 @@ import com.andrei.onevault.service.AccountDataService
 import com.andrei.onevault.dao.impl.AccountDataDaoImpl
 import io.realm.Realm
 
-class AccountDataServiceImpl:AccountDataService {
+class AccountDataServiceImpl : AccountDataService {
 
-    private lateinit var acctDataDao :AccountDataDaoImpl
+    private lateinit var acctDataDao: AccountDataDaoImpl
 
     override fun addAccount(account: Account): Boolean {
-
         acctDataDao = AccountDataDaoImpl()
         return acctDataDao.addAccount(account)
-
     }
 
     override fun deleteAccount(accountId: String): Boolean {
-
         acctDataDao = AccountDataDaoImpl()
         return acctDataDao.deleteAccount(accountId)
     }

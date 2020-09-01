@@ -6,21 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.andrei.onevault.AccountVaultActivity
-import com.andrei.onevault.AddAccountActivity
 import com.andrei.onevault.R
 import com.andrei.onevault.model.Account
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.account_rv_layout.view.*
 
-class AccountAdapter(private val context: Context?, private val accountList:RealmResults<Account>)
-    :RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class AccountAdapter(
+    private val context: Context?,
+    private val accountList: RealmResults<Account>
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private lateinit var mContext:Context
+    private lateinit var mContext: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -28,7 +27,8 @@ class AccountAdapter(private val context: Context?, private val accountList:Real
             this.mContext = context
         }
 
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.account_rv_layout, parent, false)
+        val v =
+            LayoutInflater.from(parent.context).inflate(R.layout.account_rv_layout, parent, false)
         return ViewHolder(v)
     }
 
@@ -40,8 +40,8 @@ class AccountAdapter(private val context: Context?, private val accountList:Real
         holder.itemView.title_tv.text = accountList[position]!!.title
         holder.itemView.desc_tv.text = accountList[position]!!.desc
 
-        holder.itemView.cardAccounts.setOnClickListener{
-            var intent:Intent = Intent(mContext, AccountVaultActivity::class.java)
+        holder.itemView.cardAccounts.setOnClickListener {
+            var intent: Intent = Intent(mContext, AccountVaultActivity::class.java)
             intent.putExtra("TITLE", accountList[position]!!.title)
             intent.putExtra("DESC", accountList[position]!!.desc)
             intent.putExtra("ACCT_ID", accountList[position]!!.id.toString())
@@ -50,7 +50,7 @@ class AccountAdapter(private val context: Context?, private val accountList:Real
 
     }
 
-    class ViewHolder(v:View?): RecyclerView.ViewHolder(v!!){
+    class ViewHolder(v: View?) : RecyclerView.ViewHolder(v!!) {
         val title = itemView.findViewById<TextView>(R.id.title_tv)
         val desc = itemView.findViewById<TextView>(R.id.desc_tv)
         val cardView = itemView.findViewById<CardView>(R.id.cardAccounts)

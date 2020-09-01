@@ -10,33 +10,39 @@ import kotlinx.android.synthetic.main.account_vault_layout.*
 
 class AccountVaultActivity : AppCompatActivity() {
 
-    private lateinit var acctUserId:String
+    private lateinit var accountTV: TextView
+    private lateinit var passwordTV: TextView
 
-    override fun onCreate(savedInstanceState: Bundle?){
+    private lateinit var bundle: Bundle
+    private lateinit var acctUserId: String
+
+    private lateinit var delFragment: DeleteDialogFragment
+    private lateinit var verifyUserFragment: VerifyUserDialogFragment
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.account_vault_layout)
 
-        val textView1: TextView = findViewById(R.id.textView1)
-        textView1.setText(intent.getStringExtra("TITLE"))
+        accountTV = findViewById(R.id.textView1)
+        accountTV.setText(intent.getStringExtra("TITLE"))
 
-        val textView2: TextView = findViewById(R.id.textView2)
-        textView2.setText((intent.getStringExtra("DESC")))
+        passwordTV = findViewById(R.id.textView2)
+        passwordTV.setText((intent.getStringExtra("DESC")))
 
         val fm = supportFragmentManager
-        val bundle:Bundle = Bundle()
-
+        bundle = Bundle()
         acctUserId = intent.getStringExtra("ACCT_ID").toString()
 
         deleteBtn.setOnClickListener {
             bundle.putString("ACCT_ID", acctUserId)
-            val delFragment = DeleteDialogFragment()
+            delFragment = DeleteDialogFragment()
             delFragment.arguments = bundle
             delFragment.show(fm, "Delete Fragment")
         }
 
         revealBtn.setOnClickListener {
             bundle.putString("ACCT_ID", acctUserId)
-            val verifyUserFragment = VerifyUserDialogFragment()
+            verifyUserFragment = VerifyUserDialogFragment()
             verifyUserFragment.arguments = bundle
             verifyUserFragment.show(fm, "User Verify Fragment")
         }
