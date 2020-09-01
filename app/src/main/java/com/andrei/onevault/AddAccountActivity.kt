@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.andrei.onevault.model.Account
 import com.andrei.onevault.service.impl.AccountDataServiceImpl
+import com.andrei.onevault.util.AESEncryptionUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -20,6 +21,7 @@ class AddAccountActivity : AppCompatActivity() {
     private lateinit var firebaseAuth:FirebaseAuth
 
     private lateinit var accountDataService:AccountDataServiceImpl
+    private lateinit var aesEncryptor:AESEncryptionUtil
 
     override fun onCreate(savedInstanceState: Bundle?){
 
@@ -45,7 +47,8 @@ class AddAccountActivity : AppCompatActivity() {
 
             val account  = Account()
             account.title = titleED.text.toString()
-            account.desc = descED.text.toString()
+            aesEncryptor = AESEncryptionUtil()
+            account.desc = aesEncryptor.encrypt(descED.text.toString(), "662ede816988e58fb6d057d9d85605e0")
             account.userID = firebaseUser.uid
 
 

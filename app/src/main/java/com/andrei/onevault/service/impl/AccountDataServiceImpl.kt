@@ -22,5 +22,10 @@ class AccountDataServiceImpl:AccountDataService {
         return acctDataDao.deleteAccount(accountId)
     }
 
+    override fun getAccount(accountId: String): Account {
+        acctDataDao = AccountDataDaoImpl()
+        return acctDataDao.getAccount(accountId)
+    }
+
 
 }

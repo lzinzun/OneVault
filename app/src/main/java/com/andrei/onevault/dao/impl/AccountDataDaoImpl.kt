@@ -58,4 +58,22 @@ class AccountDataDaoImpl: AccountDataDao {
             false
         }
     }
+
+    override fun getAccount(accountId: String): Account {
+
+        realm = Realm.getDefaultInstance()
+
+        try{
+            val query: RealmQuery<Account> = realm.where<Account>(Account::class.java).equalTo("id", accountId.toInt())
+            val result: RealmResults<Account> = query.findAll()
+
+            val account: RealmResults<Account> = result
+
+            realm.close()
+            return account[0]!!
+        }catch (ex:Exception){
+            realm.close()
+            return null!!
+        }
+    }
 }
