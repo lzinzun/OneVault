@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.andrei.onevault.fragment.DeleteDialogFragment
+import com.andrei.onevault.fragment.VerifyUserDialogFragment
 import kotlinx.android.synthetic.main.account_vault_layout.*
 
 class AccountVaultActivity : AppCompatActivity() {
@@ -31,8 +32,13 @@ class AccountVaultActivity : AppCompatActivity() {
             val delFragment = DeleteDialogFragment()
             delFragment.arguments = bundle
             delFragment.show(fm, "Delete Fragment")
-            //startActivity(Intent(this, OpenVaultActivity::class.java))
-            //finish()
+        }
+
+        revealBtn.setOnClickListener {
+            bundle.putString("ACCT_ID", acctUserId)
+            val verifyUserFragment = VerifyUserDialogFragment()
+            verifyUserFragment.arguments = bundle
+            verifyUserFragment.show(fm, "User Verify Fragment")
         }
 
     }

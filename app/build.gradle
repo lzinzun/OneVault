@@ -41,6 +41,7 @@ dependencies {
 
 
     implementation 'com.google.firebase:firebase-auth:19.3.2'
+    implementation 'org.bouncycastle:bcprov-jdk16:1.46'
 }
 
 apply plugin: 'com.google.gms.google-services'

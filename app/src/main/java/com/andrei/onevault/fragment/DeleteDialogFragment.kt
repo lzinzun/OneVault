@@ -44,7 +44,6 @@ class DeleteDialogFragment : DialogFragment() {
                 val intent = Intent(context, OpenVaultActivity::class.java)
                 context?.startActivity(intent)
 
-                //dismiss()
             }
         })
 

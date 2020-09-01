@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    android:id="@+id/verifyUserContainer">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please enter Master password - again"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/master_password_text"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:hint="Master Password"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/revealPasswordBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reveal" />
+
+        <Button
+            android:id="@+id/cancelRevealBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</RelativeLayout>
