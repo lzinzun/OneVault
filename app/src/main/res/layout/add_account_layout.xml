@@ -7,7 +7,7 @@
     tools:context=".AddAccountActivity">
 
     <EditText
-        android:id="@+id/title_edittext"
+        android:id="@+id/account_title_et"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="55dp"
@@ -16,7 +16,7 @@
         android:layout_marginBottom="32dp"
         android:hint="Account Platform"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/desc_edittext"
+        app:layout_constraintBottom_toTopOf="@+id/bare_data_et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,23 +24,23 @@
         app:layout_editor_absoluteY="327dp" />
 
     <EditText
-        android:id="@+id/desc_edittext"
+        android:id="@+id/bare_data_et"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="55dp"
         android:layout_marginEnd="55dp"
         android:layout_marginBottom="42dp"
-        android:hint="Description"
+        android:hint="Password to Encrypt"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/savePasswdBtn"
+        app:layout_constraintBottom_toTopOf="@+id/save_password_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/account_title_et"
         app:layout_editor_absoluteX="55dp"
         app:layout_editor_absoluteY="409dp" />
 
     <Button
-        android:id="@+id/savePasswdBtn"
+        android:id="@+id/save_password_btn"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="55dp"
@@ -52,7 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/desc_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/bare_data_et"
         app:layout_editor_absoluteX="55dp"
         app:layout_editor_absoluteY="501dp" />
 

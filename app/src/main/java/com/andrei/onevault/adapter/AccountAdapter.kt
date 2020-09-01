@@ -37,8 +37,8 @@ class AccountAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        holder.itemView.title_tv.text = accountList[position]!!.title
-        holder.itemView.desc_tv.text = accountList[position]!!.desc
+        holder.itemView.account_tv.text = accountList[position]!!.title
+        holder.itemView.bare_data_tv.text = accountList[position]!!.desc
 
         holder.itemView.cardAccounts.setOnClickListener {
             var intent: Intent = Intent(mContext, AccountVaultActivity::class.java)
@@ -51,8 +51,8 @@ class AccountAdapter(
     }
 
     class ViewHolder(v: View?) : RecyclerView.ViewHolder(v!!) {
-        val title = itemView.findViewById<TextView>(R.id.title_tv)
-        val desc = itemView.findViewById<TextView>(R.id.desc_tv)
+        val account_title = itemView.findViewById<TextView>(R.id.account_tv)
+        val bare_data = itemView.findViewById<TextView>(R.id.bare_data_tv)
         val cardView = itemView.findViewById<CardView>(R.id.cardAccounts)
 
     }

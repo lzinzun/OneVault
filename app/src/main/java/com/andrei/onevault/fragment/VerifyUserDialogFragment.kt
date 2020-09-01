@@ -23,7 +23,7 @@ class VerifyUserDialogFragment : DialogFragment() {
 
         var rootView: View =
             inflater.inflate(R.layout.verify_user_dialog_fragment, container, false)
-        var passwordRevealButton = rootView.findViewById<Button>(R.id.revealPasswordBtn)
+        var passwordRevealButton = rootView.findViewById<Button>(R.id.reveal_password_btn)
         var cancelButton = rootView.findViewById<Button>(R.id.cancelRevealBtn)
         var acctUserId: String = arguments?.get("ACCT_ID").toString()
 

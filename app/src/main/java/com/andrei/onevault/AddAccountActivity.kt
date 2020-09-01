@@ -30,9 +30,9 @@ class AddAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_account_layout)
 
-        accountED = findViewById(R.id.title_edittext)
-        passwordED = findViewById(R.id.desc_edittext)
-        savePasswordButton = findViewById(R.id.savePasswdBtn)
+        accountED = findViewById(R.id.account_title_et)
+        passwordED = findViewById(R.id.bare_data_et)
+        savePasswordButton = findViewById(R.id.save_password_btn)
 
         savePasswordButton.setOnClickListener {
             addPasswordToDB()

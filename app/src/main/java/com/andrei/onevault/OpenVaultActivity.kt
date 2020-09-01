@@ -46,8 +46,8 @@ class OpenVaultActivity : AppCompatActivity() {
         Realm.setDefaultConfiguration(conf)
 
         realm = Realm.getDefaultInstance()
-        addAccount = findViewById(R.id.addAccountBtn)
-        accountRV = findViewById(R.id.accountRV)
+        addAccount = findViewById(R.id.add_account_btn)
+        accountRV = findViewById(R.id.account_rv)
 
         addAccount.setOnClickListener {
             realm.close()

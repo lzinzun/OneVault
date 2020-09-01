@@ -29,8 +29,8 @@ class DeleteDialogFragment : DialogFragment() {
     ): View? {
 
         var rootView: View = inflater.inflate(R.layout.delete_dialog_fragment, container, false)
-        var confirmButton = rootView.findViewById<Button>(R.id.confirmBtn)
-        var cancelButton = rootView.findViewById<Button>(R.id.cancelBtn)
+        var confirmButton = rootView.findViewById<Button>(R.id.confirm_btn)
+        var cancelButton = rootView.findViewById<Button>(R.id.cancel_btn)
 
         var acctId: String = arguments?.get("ACCT_ID").toString()
 

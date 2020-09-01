@@ -17,15 +17,15 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_activity)
 
-        register_button.setOnClickListener {
+        register_btn.setOnClickListener {
             performRegistration()
         }
     }
 
     private fun performRegistration() {
 
-        email = email_text_view.text.toString()
-        password = password_text_view.text.toString()
+        email = email_register_tv.text.toString()
+        password = password_register_tv.text.toString()
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please enter  text in email/password", Toast.LENGTH_SHORT).show()

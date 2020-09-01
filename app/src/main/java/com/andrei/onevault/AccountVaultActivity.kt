@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.account_vault_layout.*
 class AccountVaultActivity : AppCompatActivity() {
 
     private lateinit var accountTV: TextView
-    private lateinit var passwordTV: TextView
+    private lateinit var passwordTV: TextView   //temp textView for testing purposes
 
     private lateinit var bundle: Bundle
     private lateinit var acctUserId: String
@@ -23,7 +23,7 @@ class AccountVaultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.account_vault_layout)
 
-        accountTV = findViewById(R.id.textView1)
+        accountTV = findViewById(R.id.account_name_tv)
         accountTV.setText(intent.getStringExtra("TITLE"))
 
         passwordTV = findViewById(R.id.textView2)
@@ -33,14 +33,14 @@ class AccountVaultActivity : AppCompatActivity() {
         bundle = Bundle()
         acctUserId = intent.getStringExtra("ACCT_ID").toString()
 
-        deleteBtn.setOnClickListener {
+        delete_btn.setOnClickListener {
             bundle.putString("ACCT_ID", acctUserId)
             delFragment = DeleteDialogFragment()
             delFragment.arguments = bundle
             delFragment.show(fm, "Delete Fragment")
         }
 
-        revealBtn.setOnClickListener {
+        reveal_btn.setOnClickListener {
             bundle.putString("ACCT_ID", acctUserId)
             verifyUserFragment = VerifyUserDialogFragment()
             verifyUserFragment.arguments = bundle
