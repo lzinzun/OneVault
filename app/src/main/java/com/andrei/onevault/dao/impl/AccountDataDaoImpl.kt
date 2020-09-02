@@ -1,5 +1,6 @@
 package com.andrei.onevault.dao.impl
 
+import com.andrei.onevault.constant.ModelConstants
 import com.andrei.onevault.dao.AccountDataDao
 import com.andrei.onevault.model.Account
 import io.realm.Realm
@@ -7,30 +8,26 @@ import io.realm.RealmQuery
 import io.realm.RealmResults
 import java.util.*
 
-class AccountDataDaoImpl: AccountDataDao {
+class AccountDataDaoImpl : AccountDataDao {
 
-    private lateinit var realm:Realm
+    private lateinit var realm: Realm
 
     override fun addAccount(account: Account): Boolean {
 
         realm = Realm.getDefaultInstance()
 
-        return try{
-
-            realm.beginTransaction()
+        return try {
 
             account.id = UUID.randomUUID().mostSignificantBits.toInt()
 
-            //copy to DB
+            realm.beginTransaction()
             realm.insertOrUpdate(account)
             realm.commitTransaction()
-
-            realm.close()
             true
-
-        }catch (ex:Exception){
-            realm.close()
+        } catch (ex: Exception) {
             false
+        } finally {
+            realm.close()
         }
     }
 
@@ -38,24 +35,23 @@ class AccountDataDaoImpl: AccountDataDao {
 
         realm = Realm.getDefaultInstance()
 
-        return try{
+        return try {
 
-            val query: RealmQuery<Account> = realm.where<Account>(Account::class.java).equalTo("id", accountId.toInt())
-            val result: RealmResults<Account> = query.findAll()
+            var query: RealmQuery<Account> =
+                realm.where<Account>(Account::class.java).equalTo(ModelConstants.ACCOUNT_ID, accountId.toInt())
+            var result: RealmResults<Account> = query.findAll()
+            var account: RealmResults<Account> = result
 
-            val account: RealmResults<Account> = result
-
-
-            realm.executeTransaction{realm ->
+            realm.executeTransaction { realm ->
                 account.deleteAllFromRealm()
             }
-            realm.close()
+
             true
+        } catch (ex: Exception) {
 
-        }catch(ex:Exception){
-
-            realm.close()
             false
+        } finally {
+            realm.close()
         }
     }
 
@@ -63,17 +59,20 @@ class AccountDataDaoImpl: AccountDataDao {
 
         realm = Realm.getDefaultInstance()
 
-        try{
-            val query: RealmQuery<Account> = realm.where<Account>(Account::class.java).equalTo("id", accountId.toInt())
-            val result: RealmResults<Account> = query.findAll()
+        try {
 
-            val account: RealmResults<Account> = result
+            var query: RealmQuery<Account> =
+                realm.where<Account>(Account::class.java).equalTo(ModelConstants.ACCOUNT_ID, accountId.toInt())
+            var result: RealmResults<Account> = query.findAll()
+            var account: RealmResults<Account> = result
 
-            realm.close()
             return account[0]!!
-        }catch (ex:Exception){
-            realm.close()
+
+        } catch (ex: Exception) {
             return null!!
+
+        } finally {
+            realm.close()
         }
     }
 }

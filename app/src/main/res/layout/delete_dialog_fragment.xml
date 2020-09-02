@@ -24,13 +24,13 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/confirmBtn"
+            android:id="@+id/confirm_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Confirm" />
 
         <Button
-            android:id="@+id/cancelBtn"
+            android:id="@+id/cancel_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cancel" />

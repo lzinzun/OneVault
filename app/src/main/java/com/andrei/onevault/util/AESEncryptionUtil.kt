@@ -9,6 +9,9 @@ import java.security.Security
 import javax.crypto.*
 import javax.crypto.spec.SecretKeySpec
 
+/**
+ * Authored by Ahmad, Rohail
+ */
 class AESEncryptionUtil {
 
     fun encrypt(strToEncrypt: String, secret_key: String): String? {
@@ -27,9 +30,7 @@ class AESEncryptionUtil {
                 val cipherText = ByteArray(cipher.getOutputSize(input.size))
                 var ctLength = cipher.update(input, 0, input.size, cipherText, 0)
                 ctLength += cipher.doFinal(cipherText, ctLength)
-                val result =  String(
-                    Base64.encode(cipherText)
-                )
+                val result = String(Base64.encode(cipherText))
                 return result
             }
         } catch (uee: UnsupportedEncodingException) {

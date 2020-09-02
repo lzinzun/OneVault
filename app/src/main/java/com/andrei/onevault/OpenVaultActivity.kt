@@ -21,7 +21,7 @@ import io.realm.RealmConfiguration
 import io.realm.RealmQuery
 import io.realm.RealmResults
 
-class OpenVaultActivity : AppCompatActivity(){
+class OpenVaultActivity : AppCompatActivity() {
 
     private lateinit var addAccount: FloatingActionButton
     private lateinit var accountRV: RecyclerView
@@ -30,9 +30,9 @@ class OpenVaultActivity : AppCompatActivity(){
     private lateinit var realm: Realm
 
     private lateinit var firebaseUser: FirebaseUser
-    private lateinit var firebaseAuth:FirebaseAuth
+    private lateinit var firebaseAuth: FirebaseAuth
 
-    override fun onCreate(savedInstanceState: Bundle?){
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.open_vault_layout)
 
@@ -44,13 +44,10 @@ class OpenVaultActivity : AppCompatActivity(){
             .schemaVersion(0)
             .build()
         Realm.setDefaultConfiguration(conf)
-        //you can add encryption key here too with .encryptionKey()
 
-
-        //init Views
         realm = Realm.getDefaultInstance()
-        addAccount = findViewById(R.id.addAccountBtn)
-        accountRV = findViewById(R.id.accountRV)
+        addAccount = findViewById(R.id.add_account_btn)
+        accountRV = findViewById(R.id.account_rv)
 
         addAccount.setOnClickListener {
             realm.close()
@@ -62,15 +59,15 @@ class OpenVaultActivity : AppCompatActivity(){
         getAllAccounts()
     }
 
-    private fun getAllAccounts(){
+    private fun getAllAccounts() {
 
         accountList = ArrayList()
 
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseUser = firebaseAuth.currentUser!!
-        val query: RealmQuery<Account> = realm.where<Account>(Account::class.java).equalTo("userID", firebaseUser.uid)
-        val results:RealmResults<Account> = query.findAll()
-
+        val query: RealmQuery<Account> =
+            realm.where<Account>(Account::class.java).equalTo("userID", firebaseUser.uid)
+        val results: RealmResults<Account> = query.findAll()
 
         accountRV.adapter = AccountAdapter(this, results)
         accountRV.adapter!!.notifyDataSetChanged()

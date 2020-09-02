@@ -11,25 +11,33 @@ import io.realm.RealmConfiguration
 import kotlinx.android.synthetic.main.login_main.*
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var username: String
+    private lateinit var password: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_main)
 
-        login_button.setOnClickListener{
-            val username = email_text_login.text.toString()
-            val password = password_text_login.text.toString()
+        login_btn.setOnClickListener {
+            username = email_login_et.text.toString()
+            password = password_login_et.text.toString()
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(username, password)
-                .addOnCompleteListener{
+                .addOnCompleteListener {
                     val intent = Intent(this, OpenVaultActivity::class.java)
                     startActivity(intent)
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this, "Either email or password is wrong. Please try again.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Either email or password is wrong. Please try again.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
         }
 
-        signup_text_view.setOnClickListener(){
+        signup_tv.setOnClickListener() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
 
