@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.andrei.onevault.AccountVaultActivity
 import com.andrei.onevault.R
+import com.andrei.onevault.constant.ModelConstants
 import com.andrei.onevault.model.Account
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.account_rv_layout.view.*
@@ -42,9 +43,9 @@ class AccountAdapter(
 
         holder.itemView.cardAccounts.setOnClickListener {
             var intent: Intent = Intent(mContext, AccountVaultActivity::class.java)
-            intent.putExtra("TITLE", accountList[position]!!.title)
-            intent.putExtra("DESC", accountList[position]!!.desc)
-            intent.putExtra("ACCT_ID", accountList[position]!!.id.toString())
+            intent.putExtra(ModelConstants.ACCOUNT_TITLE, accountList[position]!!.title)
+            intent.putExtra(ModelConstants.ACCOUNT_DATA, accountList[position]!!.desc)
+            intent.putExtra(ModelConstants.ACCOUNT_ID, accountList[position]!!.id.toString())
             this.mContext.startActivity(intent)
         }
 

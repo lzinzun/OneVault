@@ -1,5 +1,6 @@
 package com.andrei.onevault.dao.impl
 
+import com.andrei.onevault.constant.ModelConstants
 import com.andrei.onevault.dao.AccountDataDao
 import com.andrei.onevault.model.Account
 import io.realm.Realm
@@ -37,7 +38,7 @@ class AccountDataDaoImpl : AccountDataDao {
         return try {
 
             var query: RealmQuery<Account> =
-                realm.where<Account>(Account::class.java).equalTo("id", accountId.toInt())
+                realm.where<Account>(Account::class.java).equalTo(ModelConstants.ACCOUNT_ID, accountId.toInt())
             var result: RealmResults<Account> = query.findAll()
             var account: RealmResults<Account> = result
 
@@ -61,7 +62,7 @@ class AccountDataDaoImpl : AccountDataDao {
         try {
 
             var query: RealmQuery<Account> =
-                realm.where<Account>(Account::class.java).equalTo("id", accountId.toInt())
+                realm.where<Account>(Account::class.java).equalTo(ModelConstants.ACCOUNT_ID, accountId.toInt())
             var result: RealmResults<Account> = query.findAll()
             var account: RealmResults<Account> = result
 

@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.andrei.onevault.R
+import com.andrei.onevault.constant.ModelConstants
 import com.andrei.onevault.model.Account
 import com.andrei.onevault.service.impl.AccountDataServiceImpl
 import com.andrei.onevault.util.AESEncryptionUtil
@@ -26,7 +27,7 @@ class OpenSecretDialogFragment : DialogFragment() {
         var rootView: View =
             inflater.inflate(R.layout.open_secret_dialog_fragment, container, false)
         var doneButton = rootView.findViewById<Button>(R.id.done_btn)
-        var acctUserId: String = arguments?.get("ACCT_ID").toString()
+        var acctUserId: String = arguments?.get(ModelConstants.ACCOUNT_ID).toString()
         secretTV = rootView.findViewById(R.id.revealed_secret_tv)
 
         val revealedData = getEncryptedData(acctUserId)

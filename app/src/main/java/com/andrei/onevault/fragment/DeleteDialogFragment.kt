@@ -12,6 +12,7 @@ import androidx.fragment.app.DialogFragment
 import com.andrei.onevault.OpenVaultActivity
 import com.andrei.onevault.R
 import com.andrei.onevault.RegisterActivity
+import com.andrei.onevault.constant.ModelConstants
 import com.andrei.onevault.service.impl.AccountDataServiceImpl
 
 class DeleteDialogFragment : DialogFragment() {
@@ -32,17 +33,12 @@ class DeleteDialogFragment : DialogFragment() {
         var confirmButton = rootView.findViewById<Button>(R.id.confirm_btn)
         var cancelButton = rootView.findViewById<Button>(R.id.cancel_btn)
 
-        var acctId: String = arguments?.get("ACCT_ID").toString()
+        var acctId: String = arguments?.get(ModelConstants.ACCOUNT_ID).toString()
 
         confirmButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
                 accountDataService = AccountDataServiceImpl()
                 var deleted: Boolean = accountDataService.deleteAccount(acctId)
-                if (deleted) {
-                    Log.e("Result", "Deleted!")
-                } else {
-                    Log.e("Result", "Sorry not the case")
-                }
 
                 val intent = Intent(context, OpenVaultActivity::class.java)
                 context?.startActivity(intent)

@@ -8,6 +8,8 @@ import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.andrei.onevault.R
+import com.andrei.onevault.constant.FragmentConstants
+import com.andrei.onevault.constant.ModelConstants
 import com.andrei.onevault.util.AESEncryptionUtil
 import com.google.firebase.auth.FirebaseAuth
 
@@ -25,17 +27,17 @@ class VerifyUserDialogFragment : DialogFragment() {
             inflater.inflate(R.layout.verify_user_dialog_fragment, container, false)
         var passwordRevealButton = rootView.findViewById<Button>(R.id.reveal_password_btn)
         var cancelButton = rootView.findViewById<Button>(R.id.cancelRevealBtn)
-        var acctUserId: String = arguments?.get("ACCT_ID").toString()
+        var acctUserId: String = arguments?.get(ModelConstants.ACCOUNT_ID).toString()
 
         passwordRevealButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
 
                 val bundle: Bundle = Bundle()
-                bundle.putString("ACCT_ID", acctUserId)
+                bundle.putString(ModelConstants.ACCOUNT_ID, acctUserId)
 
                 openSecretFragment = OpenSecretDialogFragment()
                 openSecretFragment.arguments = bundle
-                openSecretFragment.show(activity!!.supportFragmentManager, "Open Secret Fragment")
+                openSecretFragment.show(activity!!.supportFragmentManager, FragmentConstants.OPEN_SECRET_FRAGMENT_TAG)
                 dismiss()
 
             }
