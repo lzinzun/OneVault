@@ -26,7 +26,7 @@ There is no commercial intent for this application, this is wholy a recerational
 - User is able to delete an account
 
 ## Future Stories
-- Create Secret Key for AES Encryption
+- Create Secret Key for AES Encryption using different salting/hashing levels
 - Enable CBC mode instead of ECB
 - Editing added accounts
 - UI Upgrades for all (3) remaining Activities except Login/Register
