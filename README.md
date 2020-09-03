@@ -1,7 +1,7 @@
 # OneVault
 OneVault is a personal encryption application where users can encrypt personal data (passwords, messages, etc.), with various levels of encryption, and store it at local device.
 
-
+![alt text](https://github.com/lzinzun/OneVault/blob/master/app/src/main/res/drawable/Screen%20Shot%202020-09-02%20at%205.02.33%20PM.png)
 
 There is no commercial intent for this application, this is wholy a recerational project.
 
