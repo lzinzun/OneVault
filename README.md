@@ -24,3 +24,9 @@ There is no commercial intent for this application, this is wholy a recerational
 - User is able to enter account and its passowrd to encrypt data
 - User is able to decrypt data back if Master password provided
 - User is able to delete an account
+
+## Future Stories
+- Create Secret Key for AES Encryption
+- Enable CBC mode instead of ECB
+- Editing added accounts
+- UI Upgrades for all (3) remaining Activities except Login/Register
