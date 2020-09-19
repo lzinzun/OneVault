@@ -7,6 +7,7 @@ import java.security.InvalidKeyException
 import java.security.NoSuchAlgorithmException
 import java.security.Security
 import javax.crypto.*
+import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 /**
@@ -24,8 +25,9 @@ class AESEncryptionUtil {
             val input = strToEncrypt.toByteArray(charset("UTF8"))
 
             synchronized(Cipher::class.java) {
-                val cipher = Cipher.getInstance("AES/ECB/PKCS7Padding")
-                cipher.init(Cipher.ENCRYPT_MODE, skey)
+                val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
+                val iv = IvParameterSpec(secret_key.substring(0,16).toByteArray(Charsets.UTF_8))
+                cipher.init(Cipher.ENCRYPT_MODE, skey, iv)
 
                 val cipherText = ByteArray(cipher.getOutputSize(input.size))
                 var ctLength = cipher.update(input, 0, input.size, cipherText, 0)
@@ -64,8 +66,9 @@ class AESEncryptionUtil {
                 .decode(strToDecrypt?.trim { it <= ' ' }?.toByteArray(charset("UTF8")))
 
             synchronized(Cipher::class.java) {
-                val cipher = Cipher.getInstance("AES/ECB/PKCS7Padding")
-                cipher.init(Cipher.DECRYPT_MODE, skey)
+                val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
+                val iv = IvParameterSpec(key.substring(0,16).toByteArray(Charsets.UTF_8))
+                cipher.init(Cipher.DECRYPT_MODE, skey, iv)
 
                 val plainText = ByteArray(cipher.getOutputSize(input.size))
                 var ptLength = cipher.update(input, 0, input.size, plainText, 0)
